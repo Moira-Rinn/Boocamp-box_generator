@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import CreatBox from './components/CreateBox'
 import './App.css';
 
 function App() {
+
+  const [yourBox, setYourBox] = useState([]);
+
+  const Box = (newBox) => {
+    setYourBox(arr => [...arr, newBox]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Build-A-Box</h1>
+      <CreatBox addBox={Box} />
+      {
+        yourBox.map((item, index) => { { console.log(item) } return <div key={index} style={item}></div> })
+
+      }
     </div>
   );
 }
